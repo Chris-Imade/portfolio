@@ -41,7 +41,9 @@ const Skills = () => {
               key={skill.name}
             >
               <div className="app__flex" style={{ backgroundColor: skill.bgColor}}>
-                <img src={urlFor(skill.icon)} alt={skill.name} />
+                {skill.icon && (
+                  <img src={urlFor(skill.icon)} alt={skill.name} />
+                )}
               </div>
               <p className="p-text">{skill.name}</p>
             </motion.div>
@@ -49,17 +51,17 @@ const Skills = () => {
         </motion.div>
         <motion.div
           className='app__skills-exp'>
-          {experience?.map((experience) => (
+          {experience?.map((exp) => (
             <>
               <motion.div
                 className='app__skills-exp-item'
-                key={experience.year}
+                key={exp.year}
               >
                 <div className="app__skills-exp-year">
-                  <p className="bold-text">{experience.year}</p>
+                  <p className="bold-text">{exp.year}</p>
                 </div>
                 <motion.div className='app__skills-exp-works'>
-                  {experience.works.map((work) => (
+                  {exp.works.map((work) => (
                     <>
                       <motion.div
                         whileInView={{ opacity: [0, 1]}}
